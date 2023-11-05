@@ -10,10 +10,20 @@ add_library(ipb_arithmetic src/subtract.cpp src/sum.cpp)
 add_executable(test_ipb_arithmetic src/main.cpp)
 target_link_libraries(test_ipb_arithmetic ipb_arithmetic)
 
-# Set the directories for source, build, and results
+
+# Set the installation paths
+set(INSTALL_INCLUDE_DIR "include")
+set(INSTALL_LIB_DIR "lib")
+
+# Install headers
+install(DIRECTORY include/ DESTINATION ${INSTALL_INCLUDE_DIR})
+# Install libraries
+install(TARGETS ipb_arithmetic DESTINATION ${INSTALL_LIB_DIR})
+
+
+# Copy files to results
 set(BUILD_DIR ${CMAKE_BINARY_DIR})
 set(RESULTS_DIR ${BUILD_DIR}/../results)
-
 # Copy the executable to results/bin
 add_custom_command(
     TARGET test_ipb_arithmetic
@@ -24,7 +34,6 @@ add_custom_command(
         ${BUILD_DIR}/test_ipb_arithmetic
         ${RESULTS_DIR}/bin/
 )
-
 # Copy the library to results/lib
 add_custom_command(
     TARGET ipb_arithmetic
