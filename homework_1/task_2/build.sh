@@ -26,7 +26,7 @@ echo "..link and create main executable.."
 c++ $CXXFLAGS "$SRC_DIR/main.cpp" -L "$BUILD_DIR" -lipb_arithmetic -o "$BUILD_DIR/test_ipb_arithmetic"
 
 # Check if the build directory exists
-if [ ! -d "$RESULTS_DIR" ]; then
+if [ ! -d "$RESULTS_DIR/bin" ] || [ ! -d "$RESULTS_DIR/lib" ]; then
     echo "..create results dir.."
     mkdir -p "$RESULTS_DIR/bin" "$RESULTS_DIR/lib"
 fi
