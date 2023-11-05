@@ -1,12 +1,27 @@
 #!/usr/bin/env bash
 
+SRC_DIR="./src"
+INCLUDE_DIR="./include"
+BUILD_DIR="./build"
+RESULTS_DIR="./results"
+
 echo "Building process started..."
-mkdir -p build results
-c++ -std=c++17 -c ./src/sum.cpp -o ./build/sum.o -I ./include/
-c++ -std=c++17 -c ./src/subtract.cpp -o ./build/subtract.o -I ./include/
-c++ -std=c++17 -c ./src/main.cpp -o ./build/main.o -I ./include/
-ar rcs ./build/libipb_arithmetic.a ./build/subtract.o ./build/sum.o 
-c++ -std=c++17 ./src/main.cpp -L ./build/ -lipb_arithmetic -o ./build/test_ipb_arithmetic -I ./include/
-cp ./build/libipb_arithmetic.a ./results/lib/
-cp ./build/test_ipb_arithmetic  ./results/bin/
-echo "finished."
+mkdir -p "$BUILD_DIR" "$RESULTS_DIR/lib" "$RESULTS_DIR/bin"
+
+echo "...creating source objects..."
+CXXFLAGS="-std=c++17 -I$INCLUDE_DIR"
+c++ $CXXFLAGS -c "$SRC_DIR/sum.cpp" -o "$BUILD_DIR/sum.o"
+c++ $CXXFLAGS -c "$SRC_DIR/subtract.cpp" -o "$BUILD_DIR/subtract.o"
+c++ $CXXFLAGS -c "$SRC_DIR/main.cpp" -o "$BUILD_DIR/main.o"
+
+echo "...creating library..."
+ar rcs "$BUILD_DIR/libipb_arithmetic.a" "$BUILD_DIR/subtract.o" "$BUILD_DIR/sum.o"
+
+echo "...compiling main program..."
+c++ $CXXFLAGS "$SRC_DIR/main.cpp" -L "$BUILD_DIR" -lipb_arithmetic -o "$BUILD_DIR/test_ipb_arithmetic"
+
+echo "...copying files..."
+cp "$BUILD_DIR/libipb_arithmetic.a" "$RESULTS_DIR/lib/"
+cp "$BUILD_DIR/test_ipb_arithmetic"  "$RESULTS_DIR/bin/"
+
+echo "Build process completed."
