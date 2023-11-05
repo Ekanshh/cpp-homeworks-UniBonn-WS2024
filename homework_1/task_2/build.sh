@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Building process started..."
-mkdir -p build
+mkdir -p build results
 c++ -std=c++17 -c ./src/sum.cpp -o ./build/sum.o -I ./include/
 c++ -std=c++17 -c ./src/subtract.cpp -o ./build/subtract.o -I ./include/
 c++ -std=c++17 -c ./src/main.cpp -o ./build/main.o -I ./include/
