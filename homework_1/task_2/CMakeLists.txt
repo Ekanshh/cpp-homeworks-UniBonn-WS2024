@@ -12,6 +12,7 @@ target_link_libraries(test_ipb_arithmetic ipb_arithmetic)
 
 
 # Set the installation paths
+set(CMAKE_INSTALL_PREFIX "../install")
 set(INSTALL_INCLUDE_DIR "include")
 set(INSTALL_LIB_DIR "lib")
 
