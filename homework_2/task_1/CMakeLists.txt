@@ -1,9 +1,9 @@
 # Reference: https://github.com/sun1211/cmake_with_add_subdirectory
 
+include(${CMAKE_SOURCE_DIR}/cmake/ClangFormat.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 include_directories(include/)
-add_library(gnglib src/gng.cpp)
-add_executable(task_1 src/main.cpp)
-target_link_libraries(task_1 gnglib)
+add_executable(task_1 src/gng.cpp)
 
 set_target_properties( task_1
     PROPERTIES

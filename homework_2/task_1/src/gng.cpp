@@ -5,7 +5,6 @@
 #include <iostream>
 #include <random>
 
-namespace GNGFunc {
 int GetRandomNumber(int range_from, int range_to) {
     std::random_device rand_dev;
     std::mt19937 gen((rand_dev()));
@@ -45,4 +44,8 @@ int PlayGame(int num_to_guess, int range_from, int range_to) {
 
     return EXIT_SUCCESS;
 }
-}  // namespace GNGFunc
+
+int main() {
+    int num_to_guess = GetRandomNumber(RANGE_FROM, RANGE_TO);
+    return PlayGame(num_to_guess, RANGE_FROM, RANGE_TO);
+}
