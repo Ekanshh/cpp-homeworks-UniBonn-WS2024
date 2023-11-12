@@ -14,15 +14,15 @@ int GetRandomNumber(int range_from, int range_to) {
 }
 
 int PlayGame(int num_to_guess, int range_from, int range_to) {
-    std::cout << "Guess a number between " << range_from << " and " << range_to << std::endl;
     int guess = -1;
 
     do {
+        std::cout << "Guess a number between " << range_from << " and " << range_to << std::endl;
         std::cin >> guess;
 
         if (std::cin.fail()) {
             std::cerr << "Error encountered, exiting..." << std::endl;
-            std::cerr << num_to_guess << std::endl;
+            std::cout << num_to_guess << std::endl;
             return EXIT_FAILURE;
         }
 
