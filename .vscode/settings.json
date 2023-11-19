@@ -15,5 +15,8 @@
         "--header-insertion=never",
         "--suggest-missing-includes",
         "--compile-commands-dir=build/"
+    ],
+    "clangd.fallbackFlags": [
+        "-std=c++17"
     ]
 }
