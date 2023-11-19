@@ -1,3 +1,4 @@
 project(homework_3)
-add_library(homework_3 STATIC)
-target_sources(homework_3 PRIVATE html_writer.cpp image_browser.cpp)
+
+add_library(html_writer_lib STATIC html_writer.cpp)
+add_library(image_browser_lib STATIC image_browser.cpp)
