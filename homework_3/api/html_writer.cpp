@@ -41,7 +41,7 @@ void OpenColumn(bool highlight) {
 void CloseColumn() { fmt::print("</div>"); }
 
 void AddImage(const std::string &img_path, float score, bool highlight) {
-    std::filesystem::path full_path = img_path;
+    std::filesystem::path full_path(img_path);
     std::string filename = full_path.filename().string();
     std::string extension = full_path.extension().string();
 
