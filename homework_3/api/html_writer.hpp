@@ -61,6 +61,20 @@ void OpenRow();
 void CloseRow();
 
 /**
+ * @brief This will open a new column division for your application, make sure
+ * the class "column" is defined in the CSS file(if any).
+ *
+ * @param highlight If true, the column will be highlighted, otherwise it will
+ */
+void OpenColumn(bool highlight);
+
+/**
+ * @brief This will close a column division for your application, make sure you
+ * only call this function after a OpenColumn() call
+ */
+void CloseColumn();
+
+/**
  * @brief This function will add a new image to your web application using the
  * <img src=""> clause. It also prints the score of the image and the name of
  * the image. If it happens to be the very first image you add to your web
