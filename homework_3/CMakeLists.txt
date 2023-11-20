@@ -9,7 +9,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Include subdirectories
 add_subdirectory(api)
-add_subdirectory(src)
+# add_subdirectory(src)
 
 # Create library
 add_library(homework_3 INTERFACE)
