@@ -46,12 +46,12 @@ void AddImage(const std::string &img_path, float score, bool highlight) {
     std::string extension = full_path.extension().string();
 
     if (extension != ".png" && extension != ".jpg") {
-        fmt::print(std::cerr, "File {} is not a valid image file", filename);
+        std::cerr << "File " << filename << " is not a valid image file\n";
         return;
     }
 
     if (score < 0.0 || score > 1.0) {
-        fmt::print(std::cerr, "Score {} is not in the range [0.0, 1.0]", score);
+        std::cerr << "Score " << score << " is not in the range [0, 1]\n";
         return;
     }
 
