@@ -1,7 +1,7 @@
-add_library(homework_3 STATIC
+add_library(html_api STATIC
 
     html_writer.cpp
     image_browser.cpp
 )
 
-target_link_libraries(homework_3 PUBLIC fmt)
+target_link_libraries(html_api PUBLIC fmt)
