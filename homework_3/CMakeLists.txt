@@ -12,4 +12,3 @@ include_directories(include/)
 
 # Include subdirectories
 add_subdirectory(api)
-add_subdirectory(src)
