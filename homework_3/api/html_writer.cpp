@@ -47,12 +47,18 @@ void AddImage(const std::string &img_path, float score, bool highlight) {
 
     if (extension != ".png" && extension != ".jpg") {
         fmt::print(stderr, "File {} is not a valid image file", filename);
-    } else {
-        OpenColumn(highlight);
-        fmt::print("<h2>{}</h2>", filename);
-        fmt::print(R"(<img src="{}" />)", img_path);
-        fmt::print(R"(<p>score = {:.2f}</p>)", score);
-        CloseColumn();
+        return;
     }
+
+    if (score < 0.0 || score > 1.0) {
+        fmt::print(stderr, "Score {} is not in the range [0.0, 1.0]", score);
+        return;
+    }
+
+    OpenColumn(highlight);
+    fmt::print("<h2>{}</h2>", filename);
+    fmt::print(R"(<img src="{}" />)", img_path);
+    fmt::print(R"(<p>score = {:.2f}</p>)", score);
+    CloseColumn();
 }
 }  // namespace html_writer
