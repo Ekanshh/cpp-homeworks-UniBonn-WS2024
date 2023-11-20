@@ -14,5 +14,4 @@ set(STATIC_ANALYZER_SCRIPT_PATH "${CMAKE_SOURCE_DIR}/cmake/StaticAnalyzers.cmake
 # Include target directories for header file
 include_directories(homework_3/)
 
-# defines targets and sources
-add_subdirectory(api)
+add_library(homework_3 api/html_writer.cpp api/image_browser.cpp)
