@@ -16,7 +16,7 @@ void CloseDocument() { fmt::print("</html>"); }
 
 void AddCSSStyle(const std::string &stylesheet) {
     fmt::print("<head>");
-    fmt::print(R"(<link rel="stylesheet" type=" text/css" href="{}">)", stylesheet);
+    fmt::print(R"(<link rel="stylesheet" type="text/css" href="{}">)", stylesheet);
     fmt::print("</head>");
 }
 
