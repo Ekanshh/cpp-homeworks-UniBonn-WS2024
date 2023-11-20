@@ -45,7 +45,7 @@ void AddImage(const std::string &img_path, float score, bool highlight) {
     std::string filename = full_path.filename().string();
     std::string extension = full_path.extension().string();
 
-    if (extension != ".png" || extension != ".jpg") {
+    if (extension != ".png" && extension != ".jpg") {
         fmt::print(stderr, "File {} is not a valid image file", filename);
     } else {
         OpenColumn(highlight);
