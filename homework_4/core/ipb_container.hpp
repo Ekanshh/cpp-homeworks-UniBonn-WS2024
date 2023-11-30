@@ -31,7 +31,7 @@ struct named_vector {
     /**
      * @brief Returns the size of the vector.
      */
-    int size();
+    std::size_t size();
     /**
      * @brief Returns true if the vector is empty.
      */

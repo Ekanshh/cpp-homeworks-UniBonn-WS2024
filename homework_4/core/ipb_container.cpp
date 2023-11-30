@@ -20,7 +20,7 @@ inline std::vector<T> named_vector<T>::vector() {
 }
 
 template <typename T>
-int named_vector<T>::size() {
+std::size_t named_vector<T>::size() {
     return std_vector.size() + type_name.size();
 }
 
