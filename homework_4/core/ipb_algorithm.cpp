@@ -35,17 +35,14 @@ void fill(named_vector<int>& nvec, int value) {
 }
 
 bool find(named_vector<int> nvec, int value) {
-    for (int i = 0; i < nvec.size(); i++) {
-        if (nvec.std_vector[i] == value) {
-            return true;
-        }
-    }
-    return false;
+    return std::any_of(nvec.std_vector.begin(), nvec.std_vector.end(),
+                       [value](int num) { return num == value; });
 }
 
 void print(named_vector<int> nvec) {
-    for (int i = 0; i < nvec.size(); i++) {
-        std::cout << nvec.std_vector[i] << " ";
+    std::cout << nvec.type_name << ": ";
+    for (auto& num : nvec.std_vector) {
+        std::cout << num << " ";
     }
     std::cout << std::endl;
 }
