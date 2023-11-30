@@ -39,16 +39,16 @@ bool find(named_vector<int> nvec, int value) {
                        [value](int num) { return num == value; });
 }
 
-void print(named_vector<int> nvec) {
+void print(const named_vector<int>& nvec) {
     std::cout << nvec.type_name << ": ";
-    for (auto& num : nvec.std_vector) {
+    for (const auto& num : nvec.std_vector) {
         std::cout << num << " ";
     }
     std::cout << std::endl;
 }
 
 void toupper(named_vector<int>& nvec) {
-    for (int i = 0; i < nvec.type_name.size(); i++) {
+    for (std::size_t i = 0; i < nvec.type_name.size(); i++) {
         nvec.type_name[i] = static_cast<char>(std::toupper(nvec.name()[i]));
     }
 }
