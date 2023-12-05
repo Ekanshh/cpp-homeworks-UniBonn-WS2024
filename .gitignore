@@ -172,6 +172,14 @@ tags
 # Coc configuration directory
 .vim
 
+# End of https://www.gitignore.io/api/c,vim,c++,code,cmake,opencv,sublimetext
+
+### Local Homework ###
 # Homework description 
 *.pdf
-# End of https://www.gitignore.io/api/c,vim,c++,code,cmake,opencv,sublimetext
+
+# Local tests
+*/tests
+
+# Personal doubts txt file
+*/doubts.txt
