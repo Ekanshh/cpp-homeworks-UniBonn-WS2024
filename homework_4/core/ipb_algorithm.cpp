@@ -6,21 +6,21 @@
 
 namespace ipb {
 
-int accumulate(named_vector<int> nvec) {
-    return std::accumulate(nvec.std_vector.begin(), nvec.std_vector.end(), 0);
+int accumulate(const named_vector<int>& nvec) {
+    return std::accumulate(nvec.std_vector.cbegin(), nvec.std_vector.cend(), 0);
 }
 
-int count(named_vector<int> nvec, int value) {
-    return static_cast<int>(std::count_if(nvec.std_vector.begin(), nvec.std_vector.end(),
+int count(const named_vector<int>& nvec, const int& value) {
+    return static_cast<int>(std::count_if(nvec.std_vector.cbegin(), nvec.std_vector.cend(),
                                           [value](int num) { return num == value; }));
 }
 
-bool all_even(named_vector<int> nvec) {
-    return std::all_of(nvec.std_vector.begin(), nvec.std_vector.end(),
+bool all_even(const named_vector<int>& nvec) {
+    return std::all_of(nvec.std_vector.cbegin(), nvec.std_vector.cend(),
                        [](int num) { return num % 2 == 0; });
 }
 
-void clamp(named_vector<int>& nvec, int min, int max) {
+void clamp(named_vector<int>& nvec, const int& min, const int& max) {
     for (auto& num : nvec.std_vector) {
         if (num < min) {
             num = min;
@@ -30,12 +30,12 @@ void clamp(named_vector<int>& nvec, int min, int max) {
     }
 }
 
-void fill(named_vector<int>& nvec, int value) {
+void fill(named_vector<int>& nvec, const int& value) {
     std::fill_n(nvec.std_vector.begin(), nvec.std_vector.size(), value);
 }
 
-bool find(named_vector<int> nvec, int value) {
-    return std::any_of(nvec.std_vector.begin(), nvec.std_vector.end(),
+bool find(const named_vector<int>& nvec, const int& value) {
+    return std::any_of(nvec.std_vector.cbegin(), nvec.std_vector.cend(),
                        [value](int num) { return num == value; });
 }
 
@@ -55,7 +55,7 @@ void toupper(named_vector<int>& nvec) {
 
 void sort(named_vector<int>& nvec) { std::sort(nvec.std_vector.begin(), nvec.std_vector.end()); }
 
-void rotate(named_vector<int>& nvec, int n) {
+void rotate(named_vector<int>& nvec, const int& n) {
     std::rotate(nvec.std_vector.begin(), nvec.std_vector.begin() + n, nvec.std_vector.end());
 }
 
