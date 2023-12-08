@@ -1,6 +1,5 @@
 #include "serialize.hpp"
 
-#include <cstddef>
 #include <fstream>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/opencv.hpp>
@@ -40,7 +39,7 @@ cv::Mat Deserialize(const std::string& filename) {
      * @Ref: https://stackoverflow.com/a/32357875
      *
      */
-    std::ifstream fs(filename, std::ios::binary);
+    std::ifstream fs(filename, std::fstream::binary);
     int rows = 0;
     int cols = 0;
     int type = 0;
@@ -52,11 +51,8 @@ cv::Mat Deserialize(const std::string& filename) {
     fs.read(reinterpret_cast<char*>(&channels), sizeof(int));  // channels
 
     cv::Mat m(rows, cols, type);
-    int elem_sz = CV_ELEM_SIZE(type);
+    size_t elem_sz = m.elemSize();
     fs.read(reinterpret_cast<char*>(m.data), elem_sz * rows * cols);
-
-    cv::imshow("Deserialized", m);
-
     return m;
 }
 
