@@ -7,11 +7,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package( OpenCV REQUIRED )
-MESSAGE(STATUS "Include dirs ${OpenCV_INCLUDE_DIRS}")
-MESSAGE(STATUS "LINK LIBRARIES ${OpenCV_LIBS}")
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 # Include subdirectories
 add_subdirectory(core)
 add_subdirectory(interface)
-add_subdirectory(tests)
