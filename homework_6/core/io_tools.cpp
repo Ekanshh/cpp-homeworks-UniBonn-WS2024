@@ -12,7 +12,8 @@
 #include <iostream>
 #include <string>
 
-namespace igg::io_tools {
+namespace igg {
+namespace io_tools {
 
 ImageData ReadFromPgm(const std::string& file_name) {
     std::ifstream pgm_file(file_name, std::ios_base::in);
@@ -56,5 +57,5 @@ bool WriteToPgm(const ImageData& image_data, const std::string& file_name) {
     }
     return true;
 }
-
-}  // namespace igg::io_tools
+}  // namespace io_tools
+}  // namespace igg
