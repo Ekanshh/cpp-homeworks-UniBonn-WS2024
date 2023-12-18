@@ -20,6 +20,8 @@ public:
     bool FillFromPgm(const std::string& file_name);
     void WriteToPgm(const std::string& file_name);
 
+    std::vector<float> ComputeHistogram(int bins) const;
+
 private:
     int rows_;
     int cols_;

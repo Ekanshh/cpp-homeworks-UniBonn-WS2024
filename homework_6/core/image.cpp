@@ -34,4 +34,22 @@ void Image::WriteToPgm(const std::string& file_name) {
     image_data.data = data_;
     io_tools::WriteToPgm(image_data, file_name);
 }
+
+std::vector<float> Image::ComputeHistogram(int bins) const {
+    std::vector<float> histogram(bins, 0.0F);
+    int bin_width = 255 / bins;
+
+    for (const auto& pixel_val : data_) {
+        int bin_index = static_cast<int>(pixel_val / bin_width);
+        bin_index = std::max(0, std::min(bin_index, bins - 1));
+        histogram[bin_index] += 1.0F;
+    }
+
+    std::vector<float> normalized_histogram(bins, 0.0F);
+    for (std::size_t i = 0; i < histogram.size(); i++) {
+        normalized_histogram[i] = histogram[i] / static_cast<float>(data_.size());
+    }
+
+    return normalized_histogram;
+}
 }  // namespace igg
