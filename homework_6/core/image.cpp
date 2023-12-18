@@ -6,7 +6,7 @@
 
 namespace igg {
 
-Image::Image() : rows_(0), cols_(0), data_(0) {}
+Image::Image() = default;
 Image::Image(const int& rows, const int& cols)
     : rows_(rows), cols_(cols), data_(static_cast<std::size_t>(rows * cols)){};
 
