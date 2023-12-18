@@ -22,6 +22,9 @@ public:
 
     std::vector<float> ComputeHistogram(int bins) const;
 
+    void DownScale(int scale);
+    void UpScale(int scale);
+
 private:
     int rows_;
     int cols_;

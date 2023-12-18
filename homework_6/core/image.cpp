@@ -52,4 +52,39 @@ std::vector<float> Image::ComputeHistogram(int bins) const {
 
     return normalized_histogram;
 }
+
+void Image::DownScale(int scale) {
+    int new_rows = rows_ / scale;
+    int new_cols = cols_ / scale;
+    std::vector<uint8_t> new_data(static_cast<std::size_t>(new_rows * new_cols));
+
+    for (int row = 0; row < new_rows; row++) {
+        for (int col = 0; col < new_cols; col++) {
+            int new_index = row * new_cols + col;
+            int old_index = (row * scale) * cols_ + (col * scale);
+            new_data[new_index] = data_[old_index];
+        }
+    }
+
+    rows_ = new_rows;
+    cols_ = new_cols;
+    data_ = new_data;
+}
+void Image::UpScale(int scale) {
+    int new_rows = rows_ * scale;
+    int new_cols = cols_ * scale;
+    std::vector<uint8_t> new_data(static_cast<std::size_t>(new_rows * new_cols));
+
+    for (int row = 0; row < new_rows; row++) {
+        for (int col = 0; col < new_cols; col++) {
+            int new_index = row * new_cols + col;
+            int old_index = (row / scale) * cols_ + (col / scale);
+            new_data[new_index] = data_[old_index];
+        }
+    }
+
+    rows_ = new_rows;
+    cols_ = new_cols;
+    data_ = new_data;
+}
 }  // namespace igg
