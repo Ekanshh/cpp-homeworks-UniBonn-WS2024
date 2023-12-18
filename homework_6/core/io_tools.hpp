@@ -10,8 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace igg {
-namespace io_tools {
+namespace igg::io_tools {
 
 /// Dummy structure to store relevant image data.
 struct ImageData {
@@ -28,7 +27,6 @@ ImageData ReadFromPgm(const std::string& file_name);
 /// Write image data into an ascii pgm file. Return true if successful.
 bool WriteToPgm(const ImageData& image_data, const std::string& file_name);
 
-}  // namespace io_tools
-}  // namespace igg
+}  // namespace igg::io_tools
 
 #endif  // IGG_IMAGE_IO_TOOLS_HPP_

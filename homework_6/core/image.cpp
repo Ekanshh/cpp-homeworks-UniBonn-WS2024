@@ -18,7 +18,7 @@ const uint8_t& Image::at(int row, int col) const { return data_[row * cols_ + co
 uint8_t& Image::at(int row, int col) { return data_[row * cols_ + col]; }
 
 bool Image::FillFromPgm(const std::string& file_name) {
-    io_tools::ImageData image_data = io_tools::ReadFromPgm(file_name);
+    igg::io_tools::ImageData image_data = igg::io_tools::ReadFromPgm(file_name);
     rows_ = image_data.rows;
     cols_ = image_data.cols;
     data_ = image_data.data;
@@ -26,12 +26,12 @@ bool Image::FillFromPgm(const std::string& file_name) {
 }
 
 void Image::WriteToPgm(const std::string& file_name) {
-    io_tools::ImageData image_data;
+    igg::io_tools::ImageData image_data;
     image_data.rows = rows_;
     image_data.cols = cols_;
     image_data.max_val = *std::max_element(data_.begin(), data_.end());
     image_data.data = data_;
-    io_tools::WriteToPgm(image_data, file_name);
+    igg::io_tools::WriteToPgm(image_data, file_name);
 }
 
 std::vector<float> Image::ComputeHistogram(int bins) const {
