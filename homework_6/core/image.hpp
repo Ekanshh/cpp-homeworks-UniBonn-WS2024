@@ -25,8 +25,8 @@ public:
     void UpScale(int scale);
 
 private:
-    int rows_;
-    int cols_;
+    int rows_ = 0;
+    int cols_ = 0;
     std::vector<uint8_t> data_;
 };
 }  // namespace igg
