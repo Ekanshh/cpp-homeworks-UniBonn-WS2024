@@ -8,8 +8,7 @@ namespace igg {
 
 Image::Image() : rows_(0), cols_(0), data_(0) {}
 Image::Image(const int& rows, const int& cols)
-    : rows_(rows), cols_(cols), data_(static_cast<std::size_t>(rows * cols)) {}
-Image::~Image() = default;
+    : rows_(rows), cols_(cols), data_(static_cast<std::size_t>(rows * cols)){};
 
 int Image::rows() const { return rows_; }
 int Image::cols() const { return cols_; }

@@ -8,7 +8,6 @@ class Image {
 public:
     Image();
     Image(const int& rows, const int& cols);
-    ~Image();
 
     [[nodiscard]] int rows() const;
     [[nodiscard]] int cols() const;
