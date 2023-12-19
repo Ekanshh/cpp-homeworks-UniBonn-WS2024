@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace igg{
+namespace igg {
 namespace io_tools {
 
 /// Dummy structure to store relevant image data.
