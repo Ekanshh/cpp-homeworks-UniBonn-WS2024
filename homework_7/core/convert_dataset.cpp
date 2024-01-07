@@ -6,7 +6,9 @@
 
 #include "serialize.hpp"
 
-namespace ipb::serialization::sifts {
+namespace ipb {
+namespace serialization {
+namespace sifts {
 
 void ConvertDataset(const std::filesystem::path& img_path) {
     // Create bin directory to store the converted dataset
@@ -40,4 +42,7 @@ std::vector<cv::Mat> LoadDataset(const std::filesystem::path& bin_path) {
     }
     return descriptors;
 }
-}  // namespace ipb::serialization::sifts
+
+}  // namespace sifts
+}  // namespace serialization
+}  // namespace ipb

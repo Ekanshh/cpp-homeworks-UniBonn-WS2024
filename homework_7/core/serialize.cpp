@@ -4,7 +4,8 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/opencv.hpp>
 
-namespace ipb::serialization {
+namespace ipb {
+namespace serialization {
 
 void Serialize(const cv::Mat& m, const std::string& filename) {
     /**
@@ -55,5 +56,5 @@ cv::Mat Deserialize(const std::string& filename) {
     fs.read(reinterpret_cast<char*>(m.data), elem_sz * rows * cols);
     return m;
 }
-
-}  // namespace ipb::serialization
+}  // namespace serialization
+}  // namespace ipb

@@ -10,7 +10,9 @@
 #include <string>
 #include <vector>
 
-namespace ipb::serialization::sifts {
+namespace ipb {
+namespace serialization {
+namespace sifts {
 /**
  * @brief This helper function reads all the png files from a given path,
  * compute the SIFT descriptors for each of them, and saves the results to a
@@ -41,6 +43,8 @@ void ConvertDataset(const std::filesystem::path& img_path);
  */
 std::vector<cv::Mat> LoadDataset(const std::filesystem::path& bin_path);
 
-}  // namespace ipb::serialization::sifts
+}  // namespace sifts
+}  // namespace serialization
+}  // namespace ipb
 
 #endif  // CONVERT_DATASET_HPP_
