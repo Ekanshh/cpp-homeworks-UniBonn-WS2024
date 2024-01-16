@@ -14,8 +14,8 @@ ImageData PngIoStrategy::ReadFromDisk(const std::string& file_name) const {
     png_uint_32 cols_ = image.get_width();
     std::vector<png::rgb_pixel> data_(
             static_cast<std::vector<png::rgb_pixel>::size_type>(rows_ * cols_));
-    for (int row = 0; row < rows_; row++) {
-        for (int col = 0; col < cols_; col++) {
+    for (int row = 0; row < static_cast<int>(rows_); row++) {
+        for (int col = 0; col < static_cast<int>(cols_); col++) {
             data_[row * cols_ + col].red = image[row][col].red;
             data_[row * cols_ + col].green = image[row][col].green;
             data_[row * cols_ + col].blue = image[row][col].blue;
@@ -27,8 +27,8 @@ ImageData PngIoStrategy::ReadFromDisk(const std::string& file_name) const {
 void PngIoStrategy::WriteToDisk(const std::string& file_name, const ImageData& image) const {
     {
         png::image<png::rgb_pixel> png_image(image.cols, image.rows);
-        for (int row = 0; row < image.rows; row++) {
-            for (int col = 0; col < image.cols; col++) {
+        for (int row = 0; row < static_cast<int>(image.rows); row++) {
+            for (int col = 0; col < static_cast<int>(image.cols); col++) {
                 png_image[row][col].red = image.data[row * image.cols + col].red;
                 png_image[row][col].green = image.data[row * image.cols + col].green;
                 png_image[row][col].blue = image.data[row * image.cols + col].blue;
@@ -92,7 +92,7 @@ void PpmIoStrategy::WriteToDisk(const std::string& file_name, const ImageData& i
         file << "255" << std::endl;
 
         // Write data
-        for (int i = 0; i < image.rows * image.cols; i++) {
+        for (int i = 0; i < static_cast<int>(image.rows * image.cols); i++) {
             file << static_cast<int>(image.data[i].red) << " "
                  << static_cast<int>(image.data[i].green) << " "
                  << static_cast<int>(image.data[i].blue) << std::endl;
