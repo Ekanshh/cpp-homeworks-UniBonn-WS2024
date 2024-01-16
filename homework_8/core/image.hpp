@@ -34,7 +34,7 @@ public:
     }
 
     bool ReadFromDisk(const std::string& file_name);
-    void WriteToDisk(const std::string& file_name, const ImageData& image);
+    void WriteToDisk(const std::string& file_name);
 
 private:
     int rows_ = 0;

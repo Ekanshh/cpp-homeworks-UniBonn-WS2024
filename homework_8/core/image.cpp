@@ -74,12 +74,22 @@ bool Image::ReadFromDisk(const std::string& file_name) {
     return true;
 }
 
-void Image::WriteToDisk(const std::string& file_name, const ImageData& image) {
+void Image::WriteToDisk(const std::string& file_name) {
     if (strategy_ptr_ == nullptr) {
         std::cerr << "Error: IoStrategy not set" << std::endl;
         std::quick_exit(1);
     }
-    return strategy_ptr_->WriteToDisk(file_name, image);
+    auto image_data_rows_ = static_cast<png::uint_32>(rows_);
+    auto image_data_cols_ = static_cast<png::uint_32>(cols_);
+    auto image_pixel_data_ = std::vector<png::rgb_pixel>(rows_ * cols_);
+    for (int row = 0; row < rows_; row++) {
+        for (int col = 0; col < cols_; col++) {
+            image_pixel_data_.emplace_back(data_[row * cols_ + col].red,
+                                           data_[row * cols_ + col].green,
+                                           data_[row * cols_ + col].blue);
+        }
+    }
+    ImageData image_data{image_data_rows_, image_data_cols_, image_pixel_data_};
+    strategy_ptr_->WriteToDisk(file_name, image_data);
 }
-
 }  // namespace igg
