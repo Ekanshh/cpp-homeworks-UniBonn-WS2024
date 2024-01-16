@@ -29,11 +29,10 @@ public:
     bool empty() const;
     std::vector<int>::iterator begin();
     std::vector<int>::iterator end();
-    const std::vector<int>::const_iterator begin() const;
-    const std::vector<int>::const_iterator end() const;
-
-    const std::vector<int>::const_iterator cbegin() const;
-    const std::vector<int>::const_iterator cend() const;
+    std::vector<int>::const_iterator begin() const;
+    std::vector<int>::const_iterator end() const;
+    std::vector<int>::const_iterator cbegin() const;
+    std::vector<int>::const_iterator cend() const;
 
     std::vector<int> data() const;
 

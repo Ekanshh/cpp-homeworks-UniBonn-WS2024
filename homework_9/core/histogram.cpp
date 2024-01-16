@@ -67,10 +67,10 @@ bool Histogram::empty() const { return data_.empty(); }
 
 std::vector<int>::iterator Histogram::begin() { return data_.begin(); }
 std::vector<int>::iterator Histogram::end() { return data_.end(); }
-const std::vector<int>::const_iterator Histogram::begin() const { return data_.begin(); }
-const std::vector<int>::const_iterator Histogram::end() const { return data_.end(); }
-const std::vector<int>::const_iterator Histogram::cbegin() const { return data_.cbegin(); }
-const std::vector<int>::const_iterator Histogram::cend() const { return data_.cend(); }
+std::vector<int>::const_iterator Histogram::begin() const { return data_.begin(); }
+std::vector<int>::const_iterator Histogram::end() const { return data_.end(); }
+std::vector<int>::const_iterator Histogram::cbegin() const { return data_.cbegin(); }
+std::vector<int>::const_iterator Histogram::cend() const { return data_.cend(); }
 
 std::vector<int> Histogram::data() const { return data_; }
 }  // namespace ipb
