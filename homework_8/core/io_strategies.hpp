@@ -14,7 +14,12 @@ struct ImageData {
 class IoStrategy {
 public:
     IoStrategy() = default;
+    IoStrategy(const IoStrategy&) = default;
+    IoStrategy& operator=(const IoStrategy&) = default;
+    IoStrategy(IoStrategy&&) = default;
+    IoStrategy& operator=(IoStrategy&&) = default;
     virtual ~IoStrategy() = default;
+
     virtual ImageData ReadFromDisk(const std::string& file_name) const = 0;
     virtual void WriteToDisk(const std::string& file_name, const ImageData& image) const = 0;
 };
@@ -22,7 +27,12 @@ public:
 class PngIoStrategy : public IoStrategy {
 public:
     PngIoStrategy() = default;
+    PngIoStrategy(const PngIoStrategy&) = default;
+    PngIoStrategy& operator=(const PngIoStrategy&) = default;
+    PngIoStrategy(PngIoStrategy&&) = default;
+    PngIoStrategy& operator=(PngIoStrategy&&) = default;
     ~PngIoStrategy() override = default;
+
     ImageData ReadFromDisk(const std::string& file_name) const override;
     void WriteToDisk(const std::string& file_name, const ImageData& image) const override;
 };
@@ -31,6 +41,11 @@ class PpmIoStrategy : public IoStrategy {
 public:
     PpmIoStrategy() = default;
     ~PpmIoStrategy() override = default;
+    PpmIoStrategy(const PpmIoStrategy&) = default;
+    PpmIoStrategy& operator=(const PpmIoStrategy&) = default;
+    PpmIoStrategy(PpmIoStrategy&&) = default;
+    PpmIoStrategy& operator=(PpmIoStrategy&&) = default;
+
     ImageData ReadFromDisk(const std::string& file_name) const override;
     void WriteToDisk(const std::string& file_name, const ImageData& image) const override;
 };
