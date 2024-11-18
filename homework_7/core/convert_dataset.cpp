@@ -1,25 +1,23 @@
 #include "convert_dataset.hpp"
 
+#include <filesystem>
 #include <iostream>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/xfeatures2d.hpp>
 
 #include "serialize.hpp"
 
-namespace ipb {
-namespace serialization {
-namespace sifts {
+namespace ipb::serialization::sifts {
 
-void ConvertDataset(const std::filesystem::path& img_path) {
-    // Create bin directory to store the converted dataset
-    std::string bin_path = img_path.string() + "/../bin/";
+void ConvertDataset(const std::filesystem::path& dataset_path) {
+    std::string bin_path = dataset_path.string() + "/../bin/";
     if (!std::filesystem::exists(bin_path)) {
         std::filesystem::create_directory(bin_path);
     }
 
     // Iterate over the images in the dataset
-    for (const auto& entry : std::filesystem::directory_iterator(img_path)) {
-        if (entry.path().extension().string() == ".png") {
+    for (const auto& entry : std::filesystem::directory_iterator(dataset_path)) {
+        if (entry.path().extension() == ".png") {
             cv::Mat img = cv::imread(entry.path().string(), cv::IMREAD_GRAYSCALE);
             cv::Ptr<cv::SIFT> detector = cv::SIFT::create();
             std::vector<cv::KeyPoint> keypoints;
@@ -43,6 +41,4 @@ std::vector<cv::Mat> LoadDataset(const std::filesystem::path& bin_path) {
     return descriptors;
 }
 
-}  // namespace sifts
-}  // namespace serialization
-}  // namespace ipb
+}  // namespace ipb::serialization::sifts

@@ -15,9 +15,7 @@ public:
     static BowDictionary &GetInstance();
 
     BowDictionary(const BowDictionary &) = delete;
-    BowDictionary(BowDictionary &&) = delete;
     BowDictionary &operator=(const BowDictionary &) = delete;
-    BowDictionary &operator=(BowDictionary &&) = delete;
     ~BowDictionary() = default;
 
     void set_params(int max_iterations, std::size_t size, const std::vector<cv::Mat> &descriptors);

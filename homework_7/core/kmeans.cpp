@@ -8,17 +8,20 @@ namespace ipb {
 
 // kMeans function implementation
 cv::Mat kMeans(const std::vector<cv::Mat> &descriptors, int k, int max_iter) {
+    // Concatenate descriptors into a single matrix
     cv::Mat descriptors_mat;
-    cv::Mat centers;
-    cv::Mat labels;
-
     for (const auto &desc : descriptors) {
         descriptors_mat.push_back(desc);
     }
 
+    // Perform k-means clustering
+    cv::Mat centers;
+    cv::Mat labels;
+    const int num_attemps = 5;
+    const double eps = 1.0;
     cv::kmeans(descriptors_mat, k, labels,
-               cv::TermCriteria(cv::TermCriteria::EPS + cv::TermCriteria::COUNT, max_iter, 1.0), 3,
-               cv::KMEANS_RANDOM_CENTERS, centers);
+               cv::TermCriteria(cv::TermCriteria::EPS + cv::TermCriteria::COUNT, max_iter, eps),
+               num_attemps, cv::KMEANS_RANDOM_CENTERS, centers);
     return centers;
 }
 
